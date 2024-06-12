@@ -1,6 +1,7 @@
 package ma.enset.activitepratiquen5.web;
 
 import lombok.AllArgsConstructor;
+import ma.enset.activitepratiquen5.dtos.NewPaymentDTO;
 import ma.enset.activitepratiquen5.entities.Payment;
 import ma.enset.activitepratiquen5.entities.PaymentStatus;
 import ma.enset.activitepratiquen5.entities.PaymentType;
@@ -25,6 +26,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin("*")
 public class PaymentRestController {
     private PaymentRepository paymentRepository;
     private StudentRepository studentRepository;
@@ -105,7 +107,7 @@ public class PaymentRestController {
     }
     //MediaType.MULTIPART_FORM_DATA_VALUE for there is structured ,data there are files
     @PostMapping(path="/payments",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public Payment savePayment(@RequestParam MultipartFile file_, LocalDate date , PaymentType type, String student_code ,Double amount) throws IOException {
+    public Payment savePayment(@RequestParam("file") MultipartFile file, NewPaymentDTO newpaymentDTO) throws IOException {
         /*//where the folder is sent
         Path forlderPath= Paths.get(System.getProperty("user.home"),"enset-data","payments");
         //if not exist
@@ -128,7 +130,7 @@ public class PaymentRestController {
                 .file(filePath.toUri().toString())
                 .status(PaymentStatus.CREATED)
                 .build();*/
-        return  this.paymentService.savePayment(file_,date,type,student_code,amount);
+        return  this.paymentService.savePayment(file,newpaymentDTO);
 
 
     }

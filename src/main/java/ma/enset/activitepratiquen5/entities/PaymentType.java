@@ -1,5 +1,5 @@
 package ma.enset.activitepratiquen5.entities;
 
 public enum PaymentType {
-    CASH,TRANSFER,DEPOSIT
+    CASH,TRANSFER,DEPOSIT,CHECK
 }

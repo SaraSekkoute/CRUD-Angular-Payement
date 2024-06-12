@@ -45,6 +45,18 @@ public class ActivitePratiqueN5Application {
             studentRepository.save(Student.builder().id(UUID.randomUUID().toString())
                     .firstname("Najat").code("112266").programId("BDCC")
                     .build());
+            studentRepository.save(Student.builder().id(UUID.randomUUID().toString())
+                    .firstname("Najat").code("112277").programId("BDCC")
+                    .build());
+            studentRepository.save(Student.builder().id(UUID.randomUUID().toString())
+                .firstname("Najat").code("112288").programId("BDCC")
+                .build());
+            studentRepository.save(Student.builder().id(UUID.randomUUID().toString())
+                .firstname("Najat").code("112299").programId("BDCC")
+                .build());
+            studentRepository.save(Student.builder().id(UUID.randomUUID().toString())
+                .firstname("Najat").code("112245").programId("BDCC")
+                .build());
 
             PaymentType[] paymentTypes =PaymentType.values();
             Random random=new Random();
@@ -55,7 +67,7 @@ public class ActivitePratiqueN5Application {
 
                     int index = random.nextInt(paymentTypes.length);// between 0 et paymentTypes.length
                     Payment payment =Payment.builder()
-                                   .amount(1000+(int)(Math.random())+2000)
+                                   .amount(1000+(int)(Math.random()*20000))
                                     .type(paymentTypes[index])
                                    .status(PaymentStatus.CREATED)
                                     .date(LocalDate.now())
